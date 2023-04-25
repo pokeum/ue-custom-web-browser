@@ -122,6 +122,7 @@ protected:
 	FOnBeforeBrowse OnBeforeBrowse;
 	bool HandleOnBeforeBrowse(const FString& Url, const FWebNavigationRequest& WebNavigationRequest);
 
+public:
 	/**
 	 * Called when URL starting with uewebbrowser:// scheme is loaded.
 	 */
