@@ -15,7 +15,4 @@ class DEMO_API UUtilsBlueprintFunction : public UBlueprintFunctionLibrary
 public:
 	UFUNCTION(BlueprintCallable, Category = "Demo")
 	static FString GetSampleJavascript();
-
-private:
-	static FString ReadFile(const FString& Path);
 };

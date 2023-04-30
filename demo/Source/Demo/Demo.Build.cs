@@ -9,6 +9,7 @@ public class Demo : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
+		PublicDependencyModuleNames.AddRange(new string[] { "CustomWebBrowser" });
 		
 		// Using Slate UI
 		PublicDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
