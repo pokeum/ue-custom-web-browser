@@ -23,6 +23,11 @@ UCustomWebBrowser::UCustomWebBrowser(const FObjectInitializer& ObjectInitializer
 	: Super(ObjectInitializer)
 {
 	bIsVariable = true;
+	
+	HandleOnLoadCompleted.BindLambda([this]()
+	{
+		OnLoadCompleted.Broadcast();
+	});
 }
 
 TSharedRef<SWidget> UCustomWebBrowser::RebuildWidget()
@@ -45,8 +50,9 @@ TSharedRef<SWidget> UCustomWebBrowser::RebuildWidget()
 			.SupportsTransparency(bSupportsTransparency)
 			.OnUrlChanged(BIND_UOBJECT_DELEGATE(FOnTextChanged, HandleOnUrlChanged))
 			.OnBeforePopup(BIND_UOBJECT_DELEGATE(FOnBeforePopupDelegate, HandleOnBeforePopup))
-			.OnBeforeNavigation(BIND_UOBJECT_DELEGATE(FOnBeforeBrowse, HandleOnBeforeBrowse));
-			// .OnLoadUrl(BIND_UOBJECT_DELEGATE(FOnUrlLoad, HandleOnUrlLoad));
+			.OnBeforeNavigation(BIND_UOBJECT_DELEGATE(FOnBeforeBrowse, HandleOnBeforeBrowse))
+			// .OnLoadUrl(BIND_UOBJECT_DELEGATE(FOnLoadUrl, HandleOnLoadUrl))
+			.OnLoadCompleted(HandleOnLoadCompleted);
 
 		return WebBrowserWidget.ToSharedRef();
 	}
@@ -158,7 +164,7 @@ bool UCustomWebBrowser::HandleOnBeforeBrowse(const FString& Url, const FWebNavig
 	return false;
 }
 
-// bool UCustomWebBrowser::HandleOnUrlLoad(const FString& Method, const FString& Url, FString& Response)
+// bool UCustomWebBrowser::HandleOnLoadUrl(const FString& Method, const FString& Url, FString& Response)
 // {
 // 	UE_LOG(LogTemp, Warning, TEXT("\nMethod: %s\nUrl: %s\nResponse: %s"), *Method, *Url, *Response);
 // 	return false;

@@ -47,12 +47,8 @@ FString FCustomWebBrowserCore::ReadFile(const FString& Path) const
 	// Always first check if the file that you want to manipulate exist.
 	if (FileManager.FileExists(*Path))
 	{
-		// We use the LoadFileToString to load the file into
-		if(FFileHelper::LoadFileToString(FileContent, *Path))
-		{
-			UE_LOG(LogTemp, Warning, TEXT("FileManipulation: Text From File:\n%s"), *FileContent);  
-		}
-		else
+		// We use the LoadFileToString to load the file into FileContent.
+		if (! FFileHelper::LoadFileToString(FileContent, *Path))
 		{
 			UE_LOG(LogTemp, Warning, TEXT("FileManipulation: Did not load text from file"));
 		}

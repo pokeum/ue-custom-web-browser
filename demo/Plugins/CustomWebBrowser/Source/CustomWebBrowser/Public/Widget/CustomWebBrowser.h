@@ -105,13 +105,12 @@ public:
 protected:
 	void HandleOnUrlChanged(const FText& Text);
 	bool HandleOnBeforePopup(FString URL, FString Frame);
-
-//////////////////////////////////////////////////////////////////////////////
+	
+//////////////////////////////////////////////////////////////////////////
+/// Web Browser to Unreal Engine - Messaging System
 	
 public:
 	DECLARE_DELEGATE_RetVal_TwoParams(bool, FOnBeforeBrowse, const FString&, const FWebNavigationRequest&);
-	DECLARE_DELEGATE_RetVal_ThreeParams(bool, FOnUrlLoad, const FString&, const FString&, FString&);
-
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMessageReceived, const FString&, Url);
 	
 protected:
@@ -119,7 +118,6 @@ protected:
 	 * Called before the widget navigates to a new URL.
 	 * It can be used to modify or cancel the navigation process.
 	 */
-	FOnBeforeBrowse OnBeforeBrowse;
 	bool HandleOnBeforeBrowse(const FString& Url, const FWebNavigationRequest& WebNavigationRequest);
 
 public:
@@ -129,7 +127,27 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Custom Web Browser|Event")
 	FOnMessageReceived OnMessageReceived;
 
-	/** Called when a new URL has finished loading */
-	// FOnUrlLoad OnUrlLoad;
-	// bool HandleOnUrlLoad(const FString& Method, const FString& Url, FString& Response);
+//////////////////////////////////////////////////////////////////////////
+/// OnLoadUrl
+
+// public:
+// 	DECLARE_DELEGATE_RetVal_ThreeParams(bool, FOnLoadUrl, const FString&, const FString&, FString&);
+//
+// protected:
+// 	/** Called to allow bypassing page content on load. */
+// 	bool HandleOnLoadUrl(const FString& Method, const FString& Url, FString& Response);
+	
+//////////////////////////////////////////////////////////////////////////
+/// OnLoadCompleted
+
+public:
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLoadCompleted);
+
+protected:
+	/** Called when document loading completed */
+	FSimpleDelegate HandleOnLoadCompleted;
+	
+public:
+	UPROPERTY(BlueprintAssignable, Category = "Custom Web Browser|Event")
+	FOnLoadCompleted OnLoadCompleted;
 };
