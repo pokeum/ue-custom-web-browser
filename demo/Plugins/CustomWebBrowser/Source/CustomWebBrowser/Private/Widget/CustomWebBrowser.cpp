@@ -1,4 +1,4 @@
-#include "CustomWebBrowser/Public/Widget/CustomWebBrowser.h"
+#include "Widget/CustomWebBrowser.h"
 
 #include "SWebBrowser.h"
 #include "Async/TaskGraphInterfaces.h"
