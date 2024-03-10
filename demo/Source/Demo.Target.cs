@@ -11,7 +11,15 @@ public class DemoTarget : TargetRules
 		DefaultBuildSettings = BuildSettingsVersion.V2;
 		ExtraModuleNames.AddRange( new string[] { "Demo" } );
 		
-		bOverrideBuildEnvironment = true;
-		AdditionalCompilerArguments = "-Wno-unused-but-set-variable";
+		if (Target.Platform == UnrealTargetPlatform.Mac)
+		{
+			bOverrideBuildEnvironment = true;
+			AdditionalCompilerArguments =
+				" -Wno-bitwise-instead-of-logical" +
+				" -Wno-unused-but-set-variable" +
+				" -Wno-deprecated-builtins" +
+				" -Wno-bitfield-constant-conversion" +
+				" -Wno-unknown-warning-option";
+		}
 	}
 }
