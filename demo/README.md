@@ -2,17 +2,9 @@
 
 ## Generate Project Files
 
-* ab180
-
-    ```zsh
-    /Users/Shared/Epic\ Games/UE_4.26/Engine/Build/BatchFiles/Mac/GenerateProjectFiles.sh -project="/Users/ab180/Desktop/ue-custom-web-browser/demo/Demo.uproject"
-    ```
-
-* home
-
-    ```zsh
-    /Users/Shared/Epic\ Games/UE_4.26/Engine/Build/BatchFiles/Mac/GenerateProjectFiles.sh -project="/Users/pokeum/Git/pokeum/ue-custom-web-browser/demo/Demo.uproject"
-    ```
+```zsh
+/Users/Shared/Epic\ Games/UE_4.26/Engine/Build/BatchFiles/Mac/GenerateProjectFiles.sh -project="$(pwd)/demo/Demo.uproject"
+```
 
 ## Unreal Custom Widgets [:link:](https://snorristurluson.github.io/CustomSlateWidgets/)
 
