@@ -1,19 +1,6 @@
 # Custom Web Browser
 
-## Unreal Web Browser [:link:](https://docs.unrealengine.com/4.27/ko/InteractiveExperiences/UMG/UserGuide/WidgetTypeReference/WebBrowser/)
-
 Created a `Custom Web Browser` plugin by extending the `Web Browser Widget` provided by Unreal Engine.
-
-```
-web-browser       
-  ├── WebBrowser       
-  └── WebBrowserWidget
-```
-
-| File | Location |
-|---|---|
-| WebBrowser | :file_folder: `/Users/Shared/Epic\ Games/UE_4.26/Engine/Source/Runtime/WebBrowser` |
-| WebBrowserWidget | :file_folder: `/Users/Shared/Epic\ Games/UE_4.26/Engine/Plugins/Runtime/WebBrowserWidget` |
 
 ## Web Browser to Unreal Engine - Messaging System
 
